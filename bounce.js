@@ -60,8 +60,26 @@ function addBall(){
 //changes the x and y position of ball at given index based on the x and y velocity of 
 //the ball at that index.
 function drop(index){
-	//counter++;
 	var ball=document.getElementById(Balls[index].id);
+	//counter++;
+	if(Balls[index].y > (Box.offsetHeight - (Balls[index].size))) {
+		Balls[index].vy = Balls[index].vy * -1;
+		Balls[index].x = Balls[index].x + Balls[index].vx;
+		Balls[index].y = Balls[index].y + Balls[index].vy;
+		ball.style.left = Balls[index].x+'px';
+		ball.style.top = Balls[index].y+'px';
+	}
+
+	else if((Balls[index].x > (Box.offsetWidth - (Balls[index].size)))||Balls[index].x < 0) {
+		Balls[index].vx = Balls[index].vx * -1;
+		Balls[index].x = Balls[index].x + Balls[index].vx;
+		Balls[index].y = Balls[index].y + Balls[index].vy;
+		ball.style.left = Balls[index].x+'px';
+		ball.style.top = Balls[index].y+'px';
+	}
+
+
+	else{
 	ball.style.position = "absolute";
 	Balls[index].vy = Balls[index].vy + GRAVITY;
 	Balls[index].x = Balls[index].x + Balls[index].vx;
@@ -70,6 +88,7 @@ function drop(index){
 	ball.style.top = Balls[index].y+'px';
 	/*console.log(Box.offsetWidth);
 	console.log(Box.offsetHeight);*/
+	}
 }
 
 
