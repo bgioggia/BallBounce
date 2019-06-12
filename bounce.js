@@ -3,7 +3,11 @@
 var Box = document.querySelector("Box");
 var BallNum = 0;
 var Balls = [];
-var GRAVITY=.5
+var GRAVITY=.5;
+var BallColor= "blue";
+var xVel = 1;
+var yVel = 1;
+var BallSize = 100;
 
 //Ball object constructor
 /*
@@ -30,14 +34,25 @@ function Ball(id, x, y, vx, vy, color, size) {
 //Assigns values from the ball object to this div. 
 function addBall(){
 
-	Balls[BallNum] = new Ball("ball"+BallNum, 0,0,0.5,1,"blue",0);
+	//create new ball object and add to Balls Array
+	Balls[BallNum] = new Ball("ball"+BallNum, 0,0,xVel,yVel,BallColor,BallSize);
 
+	//Set attributes of new ball div
 	var newBall=document.createElement("div");
 	newBall.setAttribute("class", "Ball");
 	newBall.setAttribute("id", Balls[BallNum].id);
 	newBall.setAttribute("left",Balls[BallNum].x);
 	newBall.setAttribute("top",Balls[BallNum].y);
+
+	//Add ball to box
 	document.getElementById("box").appendChild(newBall);
+
+	//Set size and color of ball
+	document.getElementById(Balls[BallNum].id).style.height = Balls[BallNum].size +"vh";
+	document.getElementById(Balls[BallNum].id).style.width = Balls[BallNum].size +"vh";
+	document.getElementById(Balls[BallNum].id).style.backgroundColor = Balls[BallNum].color;
+
+	//increment ball index for IDs
 	BallNum++;
 }
 
@@ -60,5 +75,10 @@ setInterval( function(){
 	}
 },1000/60);
 
+
+
+/*function makeBlue() {
+	document.getElementById("ball").style.backgroundColor = "blue";
+}*/
 
 
