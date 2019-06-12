@@ -1,13 +1,14 @@
 
 //Variables
-var Box = document.querySelector("Box");
+var Box = document.getElementById("box");
 var BallNum = 0;
 var Balls = [];
-var GRAVITY=.5;
+var GRAVITY=.05;
 var BallColor= "blue";
 var xVel = 1;
 var yVel = 1;
-var BallSize = 100;
+var BallSize = 10;
+var counter = 0;
 
 //Ball object constructor
 /*
@@ -59,12 +60,16 @@ function addBall(){
 //changes the x and y position of ball at given index based on the x and y velocity of 
 //the ball at that index.
 function drop(index){
+	//counter++;
 	var ball=document.getElementById(Balls[index].id);
 	ball.style.position = "absolute";
+	Balls[index].vy = Balls[index].vy + GRAVITY;
 	Balls[index].x = Balls[index].x + Balls[index].vx;
 	Balls[index].y = Balls[index].y + Balls[index].vy;
 	ball.style.left = Balls[index].x+'px';
 	ball.style.top = Balls[index].y+'px';
+	/*console.log(Box.offsetWidth);
+	console.log(Box.offsetHeight);*/
 }
 
 
