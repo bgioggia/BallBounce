@@ -9,6 +9,8 @@ var xVel = 1;
 var yVel = 1;
 var BallSize = 10;
 var counter = 0;
+var BoxWidth = 70;
+var BoxHeight = 80;
 
 //Ball object constructor
 /*
@@ -36,7 +38,7 @@ function Ball(id, x, y, vx, vy, color, size) {
 function addBall(){
 
 	//create new ball object and add to Balls Array
-	Balls[BallNum] = new Ball("ball"+BallNum, 0,0,xVel,yVel,BallColor,BallSize);
+	Balls[BallNum] = new Ball("ball"+BallNum, 0, 0, xVel, yVel, BallColor, BallSize);
 
 	//Set attributes of new ball div
 	var newBall=document.createElement("div");
@@ -62,7 +64,7 @@ function addBall(){
 function drop(index){
 	var ball=document.getElementById(Balls[index].id);
 	//counter++;
-	if(Balls[index].y > (Box.offsetHeight - (Balls[index].size))) {
+	if(Balls[index].y >= (Box.offsetHeight - document.getElementById(Balls[index].id).offsetHeight)) {
 		Balls[index].vy = Balls[index].vy * -1;
 		Balls[index].x = Balls[index].x + Balls[index].vx;
 		Balls[index].y = Balls[index].y + Balls[index].vy;
@@ -70,7 +72,7 @@ function drop(index){
 		ball.style.top = Balls[index].y+'px';
 	}
 
-	else if((Balls[index].x > (Box.offsetWidth - (Balls[index].size)))||Balls[index].x < 0) {
+	else if((Balls[index].x >= (Box.offsetWidth - document.getElementById(Balls[index].id).offsetWidth))||Balls[index].x < 0) {
 		Balls[index].vx = Balls[index].vx * -1;
 		Balls[index].x = Balls[index].x + Balls[index].vx;
 		Balls[index].y = Balls[index].y + Balls[index].vy;
@@ -94,6 +96,8 @@ function drop(index){
 
 //Calls drop() function on each element of the Balls Array 60 times per second
 setInterval( function(){	
+	document.getElementById("box").style.height = BoxHeight + "vh";
+	document.getElementById("box").style.width = BoxWidth +"vw";
 	for( var i=0; i<Balls.length; i++){
 		drop(i);
 	}

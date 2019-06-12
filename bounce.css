@@ -16,6 +16,7 @@
 	width:70vw;
 	height:80vh;
 	border-style:solid;
+	overflow:hidden;
 }
 
 .Ball{
