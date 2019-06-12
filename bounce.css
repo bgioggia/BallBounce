@@ -1,0 +1,28 @@
+
+
+
+.Title{
+	position:absolute;
+	font-family:Abel;
+	font-size:10vh;
+	width:100%;
+	text-align:center;
+}
+
+.Box{
+	position:absolute;
+	margin-top:15vh;
+	margin-left:15vw;
+	width:70vw;
+	height:80vh;
+	border-style:solid;
+}
+
+.Ball{
+	position:r;
+	height:10vh;
+	width:10vh;
+	border-radius: 50%;
+	background-color:red;
+	transition:smooth;
+}
