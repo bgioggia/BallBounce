@@ -16,7 +16,7 @@ function Ball(id, x, y, vx, vy, color, size) {
 
 function addBall(){
 
-	Balls[BallNum] = new Ball("ball"+BallNum, 0,0,0,0,"blue",0);
+	Balls[BallNum] = new Ball("ball"+BallNum, 0,0,0.5,1,"blue",0);
 
 	var newBall=document.createElement("div");
 	newBall.setAttribute("class", "Ball");
@@ -24,22 +24,25 @@ function addBall(){
 	newBall.setAttribute("left",Balls[BallNum].x);
 	newBall.setAttribute("top",Balls[BallNum].y);
 	document.getElementById("box").appendChild(newBall);
-	BallNum++
+	BallNum++;
 }
 
 
-setInterval(function drop(){
-	if(document.getElementById("ball")!=null) {
-	var ball=document.getElementById("ball");
+function drop(index){
+	var ball=document.getElementById(Balls[index].id);
 	ball.style.position = "absolute";
-	ball.style.left = ball.style.left+10 +'px';
-	ball.style.top = ball.offsetHeight+0.1+'px';
-	console.log(ball.style.left);
+	Balls[index].x = Balls[index].x + Balls[index].vx;
+	Balls[index].y = Balls[index].y + Balls[index].vy;
+	ball.style.left = Balls[index].x+'px';
+	ball.style.top = Balls[index].y+'px';
+}
+
+
+setInterval( function(){	
+	for( var i=0; i<Balls.length; i++){
+		drop(i);
 	}
-},50)
-
-
-
+},1000/60);
 
 
 
