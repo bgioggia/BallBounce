@@ -5,9 +5,9 @@ var BallNum = 0;
 var Balls = [];
 var GRAVITY=.05;
 var BallColor= "blue";
-var xVel = 1;
+var xVel = 0;
 var yVel = 1;
-var BallSize = 10;
+var BallSize = 100;
 var counter = 0;
 var BoxWidth = 70;
 var BoxHeight = 80;
@@ -38,22 +38,25 @@ function Ball(id, x, y, vx, vy, color, size) {
 function addBall(){
 
 	//create new ball object and add to Balls Array
-	Balls[BallNum] = new Ball("ball"+BallNum, 0, 0, xVel, yVel, BallColor, BallSize);
+	Balls[BallNum] = new Ball("ball"+BallNum, event.layerX-BallSize/2, event.layerY-BallSize/2, xVel, yVel, BallColor, BallSize);
 
 	//Set attributes of new ball div
 	var newBall=document.createElement("div");
 	newBall.setAttribute("class", "Ball");
 	newBall.setAttribute("id", Balls[BallNum].id);
-	newBall.setAttribute("left",Balls[BallNum].x);
-	newBall.setAttribute("top",Balls[BallNum].y);
+	newBall.setAttribute("onclick", "addBall()");
+	//newBall.setAttribute("left",Balls[BallNum].x + "vw");
+	//newBall.setAttribute("top",Balls[BallNum].y);
 
 	//Add ball to box
 	document.getElementById("box").appendChild(newBall);
 
 	//Set size and color of ball
-	document.getElementById(Balls[BallNum].id).style.height = Balls[BallNum].size +"vh";
-	document.getElementById(Balls[BallNum].id).style.width = Balls[BallNum].size +"vh";
+	document.getElementById(Balls[BallNum].id).style.height = Balls[BallNum].size +"px";
+	document.getElementById(Balls[BallNum].id).style.width = Balls[BallNum].size +"px";
 	document.getElementById(Balls[BallNum].id).style.backgroundColor = Balls[BallNum].color;
+
+
 
 	//increment ball index for IDs
 	BallNum++;
@@ -63,16 +66,45 @@ function addBall(){
 //the ball at that index.
 function drop(index){
 	var ball=document.getElementById(Balls[index].id);
-	//counter++;
-	if(Balls[index].y >= (Box.offsetHeight - document.getElementById(Balls[index].id).offsetHeight)) {
-		Balls[index].vy = Balls[index].vy * -1;
+
+	//display is set to block because it starts out as none
+	ball.style.display = "block";
+
+
+
+	//collision with ceiling
+	 if(Balls[index].y <= 0) {
+		Balls[index].vy = Math.abs(Balls[index].vy) ;
 		Balls[index].x = Balls[index].x + Balls[index].vx;
 		Balls[index].y = Balls[index].y + Balls[index].vy;
 		ball.style.left = Balls[index].x+'px';
 		ball.style.top = Balls[index].y+'px';
 	}
 
-	else if((Balls[index].x >= (Box.offsetWidth - document.getElementById(Balls[index].id).offsetWidth))||Balls[index].x < 0) {
+	//collision with right wall
+	 if(Balls[index].x >= (Box.offsetWidth - document.getElementById(Balls[index].id).offsetWidth)) {
+		
+		//if the horizontal velocity is 0, set the horizontal velocity to .5
+		if(Balls[index].vx == 0)
+			Balls[index].vx = .5
+		else
+			Balls[index].vx = Math.abs(Balls[index].vx) *-1;
+
+		Balls[index].x = Balls[index].x + Balls[index].vx;
+		Balls[index].y = Balls[index].y + Balls[index].vy;
+		ball.style.left = Balls[index].x+'px';
+		ball.style.top = Balls[index].y+'px';
+	}
+
+	//colission with left wall
+		 if(Balls[index].x <= 0) {
+
+		//if the horizontal velocity is 0, set the horizontal velocity to -.5
+		if(Balls[index].vx == 0)
+			Balls[index].vx = -.5;
+		else	
+			Balls[index].vx = Math.abs(Balls[index].vx) *-1;
+
 		Balls[index].vx = Balls[index].vx * -1;
 		Balls[index].x = Balls[index].x + Balls[index].vx;
 		Balls[index].y = Balls[index].y + Balls[index].vy;
@@ -80,9 +112,16 @@ function drop(index){
 		ball.style.top = Balls[index].y+'px';
 	}
 
+	//collision with floor
+	if(Balls[index].y >= (Box.offsetHeight - document.getElementById(Balls[index].id).offsetHeight)) {
+		Balls[index].vy = Math.abs(Balls[index].vy) *-1;
+		Balls[index].x = Balls[index].x + Balls[index].vx;
+		Balls[index].y = Balls[index].y + Balls[index].vy;
+		ball.style.left = Balls[index].x+'px';
+		ball.style.top = Balls[index].y+'px';
+	}
 
 	else{
-	ball.style.position = "absolute";
 	Balls[index].vy = Balls[index].vy + GRAVITY;
 	Balls[index].x = Balls[index].x + Balls[index].vx;
 	Balls[index].y = Balls[index].y + Balls[index].vy;
@@ -101,7 +140,7 @@ setInterval( function(){
 	for( var i=0; i<Balls.length; i++){
 		drop(i);
 	}
-},1000/60);
+},1000/100);
 
 
 

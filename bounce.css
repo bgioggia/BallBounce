@@ -10,6 +10,8 @@
 }
 
 .Box{
+	background-color: transparent;
+	z-index:10;
 	position:absolute;
 	margin-top:15vh;
 	margin-left:15vw;
@@ -20,6 +22,9 @@
 }
 
 .Ball{
+	/*start out display as none to avoid weird stutter frame when ball is spawned.*/
+	display:none;
+	z-index:1;
 	position:absolute;
 	height:10vh;
 	width:10vh;
