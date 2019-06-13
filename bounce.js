@@ -145,7 +145,9 @@ setInterval( function(){
 
 
 function changeColor(color) {
+	document.getElementById(BallColor).style.borderRadius = 0 + "%";
 	BallColor=color;
+	document.getElementById(color).style.borderRadius = 50 + "%";
 }
 
 

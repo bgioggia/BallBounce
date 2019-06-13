@@ -44,7 +44,7 @@
 	background-color:red;
 	transition:.5s;
 }
-.ColorButton:Hover{
+/*.ColorButton:Hover{
 	transition:.5s;
 	border-radius:50%;
 	}
@@ -52,7 +52,7 @@
 	.ColorButton:active{
 	transition:.5s;
 	border-radius:50%;
-	}
+	}*/
 
 #blue{
 	margin-left:1vw;
@@ -70,10 +70,10 @@
 	margin-top:1.5vh;
 	background-color:green;
 }
-#yellow{
+#orange{
 	margin-left:1vw;
 	margin-top:6vh;
-	background-color:yellow;
+	background-color:orange;
 }
 #purple{
 	margin-left:3.75vw;
