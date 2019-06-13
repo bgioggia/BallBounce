@@ -10,7 +10,7 @@ var yVel = 1;
 var BallSize = 100;
 var counter = 0;
 var BoxWidth = 70;
-var BoxHeight = 80;
+var BoxHeight = 70;
 
 //Ball object constructor
 /*
@@ -144,8 +144,8 @@ setInterval( function(){
 
 
 
-/*function makeBlue() {
-	document.getElementById("ball").style.backgroundColor = "blue";
-}*/
+function changeColor(color) {
+	BallColor=color;
+}
 
 

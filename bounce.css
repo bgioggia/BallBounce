@@ -13,13 +13,79 @@
 	background-color: transparent;
 	z-index:10;
 	position:absolute;
-	margin-top:15vh;
+	margin-top:12vh;
 	margin-left:15vw;
 	width:70vw;
-	height:80vh;
+	height:70vh;
 	border-style:solid;
 	overflow:hidden;
 }
+
+.Menu{
+	background-color: transparent;
+	z-index:10;
+	position:absolute;
+	margin-top:85vh;
+	margin-left:15vw;
+	width:70vw;
+	height:12vh;
+	border-style:solid;
+	overflow:hidden;
+}
+
+.ColorButton{
+	position:absolute;
+	width:2.5vw;
+	height:4vh;
+	border-width-top:1vh;
+	border-width-bottom:1vh;
+	border-width-left:1vw;
+	border-width-right:1vw;
+	background-color:red;
+	transition:.5s;
+}
+.ColorButton:Hover{
+	transition:.5s;
+	border-radius:50%;
+	}
+
+	.ColorButton:active{
+	transition:.5s;
+	border-radius:50%;
+	}
+
+#blue{
+	margin-left:1vw;
+	margin-top: 1.5vh;
+	background-color:blue;
+}
+
+#red{
+	margin-left:3.75vw;
+	margin-top: 1.5vh;
+	background-color:red;
+}
+#green{
+	margin-left:6.5vw;
+	margin-top:1.5vh;
+	background-color:green;
+}
+#yellow{
+	margin-left:1vw;
+	margin-top:6vh;
+	background-color:yellow;
+}
+#purple{
+	margin-left:3.75vw;
+	margin-top:6vh;
+	background-color:purple;
+}
+#pink{
+	margin-left:6.5vw;
+	margin-top:6vh;
+	background-color:pink;
+}
+
 
 .Ball{
 	/*start out display as none to avoid weird stutter frame when ball is spawned.*/
