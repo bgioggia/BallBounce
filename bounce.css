@@ -103,7 +103,7 @@ body{
 
 .slider{
 	float:right;
-	margin-left:20vw;
+	margin-right:2vw;
 	margin-top:1.75vh;
 	z-index: 100;
 }
@@ -126,7 +126,7 @@ body{
 
 #GravitySlider{
 	position:relative;
-	top:34vh;
+	top:36vh;
 	right: 29vh;
 	width: 70vh;
    	height: 2vh;
