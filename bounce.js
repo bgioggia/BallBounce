@@ -114,7 +114,10 @@ function drop(index){
 
 	//collision with floor
 	if(Balls[index].y >= (Box.offsetHeight - document.getElementById(Balls[index].id).offsetHeight)) {
-		Balls[index].vy = Math.abs(Balls[index].vy) *-1;
+		if(Balls[index].vy == 0)
+			Balls[index].vy = -.5;
+		else	
+			Balls[index].vy = Math.abs(Balls[index].vy) *-1;
 		Balls[index].x = Balls[index].x + Balls[index].vx;
 		Balls[index].y = Balls[index].y + Balls[index].vy;
 		ball.style.left = Balls[index].x+'px';
