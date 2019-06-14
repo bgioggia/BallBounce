@@ -1,12 +1,14 @@
 
-
+body{
+	font-family:Abel;
+	text-align:center;
+}
 
 .Title{
 	position:absolute;
-	font-family:Abel;
 	font-size:10vh;
 	width:100%;
-	text-align:center;
+	
 }
 
 .Box{
@@ -21,6 +23,10 @@
 	overflow:hidden;
 }
 
+.Box * {
+	pointer-events: none;
+}
+
 .Menu{
 	background-color: transparent;
 	z-index:10;
@@ -31,6 +37,14 @@
 	height:12vh;
 	border-style:solid;
 	overflow:hidden;
+}
+
+#VerticalMenu{
+	margin-top:12vh;
+	margin-left:87vw;
+	width:12vh;
+	height:85vh;
+	font-size:3vh;
 }
 
 .ColorButton{
@@ -58,6 +72,7 @@
 	margin-left:1vw;
 	margin-top: 1.5vh;
 	background-color:blue;
+	border-radius:50%;
 }
 
 #red{
@@ -84,6 +99,41 @@
 	margin-left:6.5vw;
 	margin-top:6vh;
 	background-color:pink;
+}
+
+.slider{
+	float:right;
+	margin-left:20vw;
+	margin-top:1.75vh;
+	z-index: 100;
+}
+
+#SizeSlider{
+	width:30vw;
+}
+
+#VelocitySlider{
+	width:30vw;
+}
+
+
+/*.GravitySlider{
+	  display: inline-block;
+	  padding: 0;
+	height:30vw;
+	width:2vh;
+}*/
+
+#GravitySlider{
+	position:relative;
+	top:34vh;
+	right: 29vh;
+	width: 70vh;
+   	height: 2vh;
+  	border: 0
+   	-webkit-transform: rotate(270deg);
+   	-moz-transform: rotate(270deg);
+    transform: rotate(270deg);
 }
 
 

@@ -6,7 +6,7 @@ var Balls = [];
 var GRAVITY=.05;
 var BallColor= "blue";
 var xVel = 0;
-var yVel = 1;
+var yVel = 0;
 var BallSize = 100;
 var counter = 0;
 var BoxWidth = 70;
@@ -122,6 +122,8 @@ function drop(index){
 	}
 
 	else{
+		//console.log(Balls[index].vx)
+		console.log(Balls[index].x)
 	Balls[index].vy = Balls[index].vy + GRAVITY;
 	Balls[index].x = Balls[index].x + Balls[index].vx;
 	Balls[index].y = Balls[index].y + Balls[index].vy;
@@ -132,9 +134,12 @@ function drop(index){
 	}
 }
 
-
 //Calls drop() function on each element of the Balls Array 60 times per second
 setInterval( function(){	
+	BallSize = document.getElementById("SizeSlider").value;
+	xVel = (document.getElementById("VelocitySlider").value *.1);//.toFixed(1);
+	GRAVITY = (document.getElementById("GravitySlider").value *.01);
+
 	document.getElementById("box").style.height = BoxHeight + "vh";
 	document.getElementById("box").style.width = BoxWidth +"vw";
 	for( var i=0; i<Balls.length; i++){

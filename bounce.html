@@ -12,22 +12,40 @@
 </head>
 
 <body>
-  <div class="Title">Bounce Ball</div>
-  <div class="Box" id="box" onclick="addBall()">
-    <!--div class="Ball" id="ball"></div-->
-  </div>
+	<div class="Title">Bounce Ball</div>
+	<div class="Box" id="box" onclick="addBall()"></div>
+	<div class="Menu" id="VerticalMenu">
+		Gravity:
+		<div class="gravitySlider">
+			<input type="range" min="0" max="10" value="5" id="GravitySlider" orient="vertical">
+		</div>
+ </div>
   <div class="Menu">
   	<table>
   		<tr>
   	<div class="ColorButton" id="blue" onclick="changeColor('blue')"></div>
   	<div class="ColorButton" id="red" onclick="changeColor('red')"></div>
   	<div class="ColorButton" id="green" onclick="changeColor('green')"></div>
+
   </tr>
   <tr>
   	<div class="ColorButton" id="orange" onclick="changeColor('orange')"></div>
   	<div class="ColorButton" id="purple" onclick="changeColor('purple')"></div>
   	<div class="ColorButton" id="pink" onclick="changeColor('pink')"></div>
+
+
   </tr>
+
+ <div class="slider">
+  	  	Ball Size:
+  <input type="range" min="10" max="150" value="70" id="SizeSlider">
+</div>
+  	<div class="slider">
+  		Horizontal Velocity:
+  <input type="range" min="-50" max="50" value="0" id="VelocitySlider">
+</div>
+
+
   	
   </div>
 
